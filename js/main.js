@@ -9,8 +9,11 @@ deathSound.volume = 0.15
 deathSound.play();
 }
 
+const enemyDeath = () => {
 let enemyDeath =  new Audio('../sounds/enemyDeath.mp3')
-enemyDeath.volume = .1
+enemyDeath.volume = 0.1
+enemyDeath.play();
+}
 
 let beep = new Audio("../sounds/ah.mp3")
 let ambient = new Audio('../sounds/ambient.mp3')
@@ -434,7 +437,7 @@ class Bullet {
                 this.height + this.y > enemy.position.y){
                     this.needReturn = true
                     enemy.velocity += 100
-                    enemyDeath.play()
+                    enemyDeath()
                 if(player.character == 'blender')
                     if (characteristics.bullets.indexOf(this) !== -1) 
                     characteristics.bullets.splice(characteristics.bullets.indexOf(this), 1);
@@ -489,7 +492,7 @@ class Bullet {
             this.height + this.y > enemy.position.y){
                 this.needReturn = true
                 enemy.velocity += 100
-                enemyDeath.play()
+                enemyDeath()
         }
         })
 
@@ -867,7 +870,7 @@ function animate() {
             && player.position.x <= enemy.position.x + enemy.width) {
             player.velocity.y = -15
             player.isGround = false
-            enemyDeath.play()
+            enemyDeath()
             enemy.velocity += 10
         }
     
